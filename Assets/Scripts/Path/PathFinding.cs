@@ -18,10 +18,9 @@ public class PathFinding : MonoBehaviour
     private int _width;
     private int _height;
     private float _cellSize;
-    private GridSystem<PathNode> _gridSystem;
+    private GridSystemHex<PathNode> _gridSystem;
 
     private const int STRAIGHT_MOVE_COST = 10;
-    private const int DIAGONAL_MOVE_COST = 14;
 
     private void Awake()
     {
@@ -30,9 +29,7 @@ public class PathFinding : MonoBehaviour
             Debug.LogError($"There's more than one {typeof(PathFinding).FullName} " + transform + " - " + Instance);
             return;
         }
-        Instance = this;
-
-        
+        Instance = this; 
     }
 
     public void Setup(int width, int height, float cellSize)
@@ -41,7 +38,7 @@ public class PathFinding : MonoBehaviour
         _height = height;
         _cellSize = cellSize;
 
-        _gridSystem = new GridSystem<PathNode>(_width, _height, (go, gp) => new(gp), _cellSize);
+        _gridSystem = new GridSystemHex<PathNode>(_width, _height, (go, gp) => new(gp), _cellSize);
         if (_createDebugObjects)
         _gridSystem.CreateDebugObjects(_gridDebugObjectPrefab, transform);
 
@@ -115,8 +112,7 @@ public class PathFinding : MonoBehaviour
                     continue;
                 }
 
-                int tentativeGCost = node.GCost
-                    + node.GridPosition.CalculateDistanceCost(neighbour.GridPosition, STRAIGHT_MOVE_COST, DIAGONAL_MOVE_COST);
+                int tentativeGCost = node.GCost + STRAIGHT_MOVE_COST;
 
                 if (tentativeGCost < neighbour.GCost)
                 {
@@ -165,16 +161,15 @@ public class PathFinding : MonoBehaviour
         List<PathNode> neigbours = new();
 
         GridPosition pos = node.GridPosition;
+        bool oddRow = pos.Z % 2 == 1;
         GridPosition[] neigboursPositions =
         {
             pos + UP,
-            pos + UP + RIGHT,
             pos + RIGHT,
-            pos + RIGHT + DOWN,
             pos + DOWN,
-            pos + DOWN + LEFT,
             pos + LEFT,
-            pos + LEFT + UP
+            pos + UP + (oddRow? RIGHT : LEFT),
+            pos + DOWN + (oddRow? RIGHT : LEFT)
         };
         foreach (GridPosition p in neigboursPositions)
             if (_gridSystem.IsValidGridPosition(p))

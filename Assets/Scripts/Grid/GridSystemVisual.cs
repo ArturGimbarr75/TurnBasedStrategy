@@ -13,6 +13,7 @@ public class GridSystemVisual : MonoBehaviour
     public static GridSystemVisual Instance { get; private set; }
 
     private GridSystemVisualSingle[,] _gridVisuals;
+    private GridSystemVisualSingle _lastSelectedGridSystemVisualSingle;
 
     private void Awake()
     {
