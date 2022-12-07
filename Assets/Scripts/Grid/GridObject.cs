@@ -7,17 +7,10 @@ public class GridObject : IFormattable
 {
     private List<Unit> _units;
     private IInteractable _interactable;
-<<<<<<< HEAD
     private GridSystemHex<GridObject> _gridSystem;
     private GridPosition _gridPosition;
 
     public GridObject(GridSystemHex<GridObject> gridSystem, GridPosition gridPosition)
-=======
-    private GridSystem<GridObject> _gridSystem;
-    private GridPosition _gridPosition;
-
-    public GridObject(GridSystem<GridObject> gridSystem, GridPosition gridPosition)
->>>>>>> master
     {
         _gridSystem = gridSystem;
         _gridPosition = gridPosition;

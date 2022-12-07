@@ -17,11 +17,7 @@ public class LevelGrid : MonoBehaviour
     [Header("Debug")]
     [SerializeField] private Transform _textCellPrefab;
 
-<<<<<<< HEAD
     private GridSystemHex<GridObject> _gridSystem;
-=======
-    private GridSystem<GridObject> _gridSystem;
->>>>>>> master
 
     private void Awake()
     {
@@ -31,11 +27,7 @@ public class LevelGrid : MonoBehaviour
             return;
         }
         Instance = this;
-<<<<<<< HEAD
         _gridSystem = new GridSystemHex<GridObject>(Width, Height, (go, gp) => new(go, gp), CellSize);
-=======
-        _gridSystem = new GridSystem<GridObject>(Width, Height, (go, gp) => new(go, gp), CellSize);
->>>>>>> master
         //_gridSystem.CreateDebugObjects(_textCellPrefab, transform);
     }
 
