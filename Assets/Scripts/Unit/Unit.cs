@@ -17,7 +17,7 @@ public class Unit : MonoBehaviour, IHitable
     private BaseAction[] _actions;
     private HealthSystem _healthSystem;
     private GridPosition _gridPosition;
-    private int _actionPoints = 2;
+    private int _actionPoints;
 
     private void Awake()
     {
@@ -25,6 +25,7 @@ public class Unit : MonoBehaviour, IHitable
         _spinAction = GetComponent<SpinAction>();
         _actions = GetComponents<BaseAction>();
         _healthSystem = GetComponent<HealthSystem>();
+        _actionPoints = _maxActionPoints;
     }
 
     private void Start()

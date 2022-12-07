@@ -1,11 +1,14 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DestructableCrate : MonoBehaviour, IHitable
 {
     public static event EventHandler OnAnyDestroyed;
 
     public GridPosition GridPosition { get; private set; }
+
+    [SerializeField] UnityEvent _onDestruct;
 
     [SerializeField] private Transform _crateDestroyPrefab;
     [SerializeField, Range(0.01f, 1)] private float _explosionForceMultiplier;
@@ -24,6 +27,7 @@ public class DestructableCrate : MonoBehaviour, IHitable
             hitSource.Value, Vector3.Distance(hitSource.Value, transform.position) + ADDITIONAL_RANGE);
         Destroy(gameObject);
         OnAnyDestroyed?.Invoke(this, EventArgs.Empty);
+        _onDestruct?.Invoke();
     }
 
     private void ApplyExplosionToChildren(Transform root, float explosionForce,

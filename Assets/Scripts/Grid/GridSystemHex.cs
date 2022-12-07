@@ -12,7 +12,7 @@ public class GridSystemHex<TGridObject>
 	private float _cellSize;
     private TGridObject[,] _gridObjects;
 
-    private const float HEX_VERTIVAL_OFFSET_MULTIPLIER = 0.75f;
+    public const float HEX_VERTIVAL_OFFSET_MULTIPLIER = 0.75f;
 	
 	public GridSystemHex(int width, int height, Func<GridSystemHex<TGridObject>, GridPosition, TGridObject> createGridObject, float cellSize = 1)
 	{

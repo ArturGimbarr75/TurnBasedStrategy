@@ -89,4 +89,18 @@ public class LevelGrid : MonoBehaviour
         GridObject gridObject = _gridSystem.GetGridObject(gridPosition);
         gridObject.SetInteractable(interactable);
     }
+
+#if UNITY_EDITOR
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+
+        Vector3 offset = new Vector3(0.5f, 0, 0.5f) * CellSize;
+        Vector3 zone = new Vector3(Width, 0, Height * GridSystemHex<GridObject>.HEX_VERTIVAL_OFFSET_MULTIPLIER) * CellSize;
+        zone += new Vector3(1.25f, 0, 0.75f) * GridSystemHex<GridObject>.HEX_VERTIVAL_OFFSET_MULTIPLIER;
+        Gizmos.DrawWireCube(zone / 2 - offset, zone);
+    }
+
+#endif
 }

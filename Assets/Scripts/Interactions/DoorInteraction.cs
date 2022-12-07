@@ -2,9 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DoorInteraction : MonoBehaviour, IInteractable
 {
+    [SerializeField] private UnityEvent _onInteract;
+
     [SerializeField] private bool _isOpened;
 
     [Header("Doors")]
@@ -63,5 +66,6 @@ public class DoorInteraction : MonoBehaviour, IInteractable
         PathFinding.Instance.SetWalkable(_gridPosition, _isOpened);
         _duration = 0;
         _onInteractionComplete = onInteractionComplete;
+        _onInteract?.Invoke();
     }
 }
