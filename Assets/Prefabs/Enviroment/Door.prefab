@@ -46,13 +46,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a70741140df0444ea900c9161d458eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onInteract:
+    m_PersistentCalls:
+      m_Calls: []
   _isOpened: 0
   _leftDoor: {fileID: 8473820591735895770}
   _rightDoor: {fileID: 8473820591482271943}
   _openedLeftScale: {x: 0.1, y: 0.8, z: 1}
-  _closedLeftScale: {x: 1, y: 0.8, z: 1}
+  _closedLeftScale: {x: 1.25, y: 0.8, z: 1}
   _openedRightScale: {x: -0.1, y: 0.8, z: 1}
-  _closedRightScale: {x: -1, y: 0.8, z: 1}
+  _closedRightScale: {x: -1.25, y: 0.8, z: 1}
   _lerpCurve:
     serializedVersion: 2
     m_Curve:
@@ -95,7 +98,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4567485262158198, guid: df31c83b27360844d9c8bb3549762491, type: 3}
       propertyPath: m_LocalScale.x
-      value: -1
+      value: -1.25
       objectReference: {fileID: 0}
     - target: {fileID: 4567485262158198, guid: df31c83b27360844d9c8bb3549762491, type: 3}
       propertyPath: m_LocalScale.y
@@ -103,7 +106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4567485262158198, guid: df31c83b27360844d9c8bb3549762491, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 4567485262158198, guid: df31c83b27360844d9c8bb3549762491, type: 3}
       propertyPath: m_LocalPosition.y
@@ -170,16 +173,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4567485262158198, guid: df31c83b27360844d9c8bb3549762491, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4567485262158198, guid: df31c83b27360844d9c8bb3549762491, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4567485262158198, guid: df31c83b27360844d9c8bb3549762491, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4567485262158198, guid: df31c83b27360844d9c8bb3549762491, type: 3}
       propertyPath: m_LocalPosition.y

@@ -30,9 +30,9 @@ public class DoorInteraction : MonoBehaviour, IInteractable
 
     private void Start()
     {
-        _gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
-        LevelGrid.Instance.SetInteractable(_gridPosition, this);
-        PathFinding.Instance.SetWalkable(_gridPosition, _isOpened);
+        _gridPosition = LevelGrid.Instance?.GetGridPosition(transform.position) ?? default;
+        LevelGrid.Instance?.SetInteractable(_gridPosition, this);
+        PathFinding.Instance?.SetWalkable(_gridPosition, _isOpened);
     }
 
     private void Update()
@@ -63,9 +63,14 @@ public class DoorInteraction : MonoBehaviour, IInteractable
     public void Interact(Action onInteractionComplete)
     {
         _isOpened = !_isOpened;
-        PathFinding.Instance.SetWalkable(_gridPosition, _isOpened);
+        PathFinding.Instance?.SetWalkable(_gridPosition, _isOpened);
         _duration = 0;
         _onInteractionComplete = onInteractionComplete;
         _onInteract?.Invoke();
+    }
+
+    public void Interact()
+    {
+        Interact(default);
     }
 }
